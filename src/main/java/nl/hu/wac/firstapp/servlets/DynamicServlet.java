@@ -38,7 +38,7 @@ public class DynamicServlet extends HttpServlet {
         }catch (NullPointerException e){
             System.out.println(e);
         }
-
+        String[] options = {"add", "substract", "multiply", "divide"};
         PrintWriter out = response.getWriter();
         response.setContentType("text/html");
         out.println("<!DOCTYPE html>");
@@ -47,6 +47,26 @@ public class DynamicServlet extends HttpServlet {
         out.println(" <title>Calculator</title>");
         out.println("</head>");
         out.println("<body>");
+        out.println("<form action=\"DynamicServlet.do\" method=\"get\">");
+        out.println("<div>");
+        out.println("<input type=\"number\" name=\"firstvalue\" value =\""+intOne+"\"/>");
+        out.println("<input type=\"number\" name=\"secondvalue\" value =\""+intTwo+"\"/>");
+        out.println("<select name=\"type\" id=\"typeselector\">");
+
+        for(String option : options) {
+            String selected = "";
+            if(option.contains(action)){
+                selected = "selected";
+            }
+            out.println("<option "+selected+" value=\""+option+"\">"+option+"</option>");
+        }
+//        out.println("<option value=\"substract\">substract</option>");
+//        out.println("<option value=\"multiply\">multiply</option>");
+//        out.println("<option value=\"divide\">divide</option>");
+        out.println("</select>");
+        out.println("<input type=\"submit\" value=\"calculate\"/>");
+        out.println("</div>\n" +
+                "    </form>");
         out.println(String.format("%.2f %s %.2f = %.2f", intOne, stringval, intTwo,calculatedval));
         out.println("</body>");
         out.println("</html>");
