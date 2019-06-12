@@ -9,10 +9,13 @@ import javax.json.JsonObjectBuilder;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 @Path("/countries")
 public class WorldResource {
-    WorldService service = new WorldService();
+    private WorldService service = new WorldService();
     private JsonObjectBuilder convert2Json(Country c) {
         JsonObjectBuilder json = Json.createObjectBuilder();
         json.add("code", c.getCode())
@@ -21,7 +24,7 @@ public class WorldResource {
                 .add("continent", c.getContinent())
                 .add("capital", c.getCapital())
                 .add("region", c.getRegion())
-                .add("suface", c.getSurface())
+                .add("surface", c.getSurface())
                 .add("population", c.getPopulation())
                 .add("gorvernment", c.getGovernment())
                 .add("lat", c.getLatitude())
@@ -30,7 +33,19 @@ public class WorldResource {
     }
     @GET
     public String test(){
-        return "hello world";
+        JsonObjectBuilder allCountries = Json.createObjectBuilder();
+        int index = 0;
+        ArrayList<String> allCountriesList = new ArrayList<>();
+        for(Country c: service.getAllCountries()){
+            allCountriesList.add(c.getCode());
+        }
+        Collections.sort(allCountriesList);
+        for(String s: allCountriesList){
+            Country c = service.getCountryByCode(s);
+            allCountries.add(Integer.toString(index), convert2Json(c));
+            index++;
+        }
+        return allCountries.build().toString();
     }
     @GET
     @Path("/largestsurfaces")

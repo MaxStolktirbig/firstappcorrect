@@ -34,10 +34,11 @@ public class WorldService {
 	}
 	
 	public List<Country> get10LargestPopulations() {
-		Collections.sort(allCountries, new Comparator<Country>() {
+		Collections.
+				sort(allCountries, new Comparator<Country>() {
 			public int compare(Country c1, Country c2) {
 				return c2.getPopulation() - c1.getPopulation();
-			};
+			}
 		});
 		
 		return allCountries.subList(0, 10);
@@ -47,7 +48,7 @@ public class WorldService {
 		Collections.sort(allCountries, new Comparator<Country>() {
 			public int compare(Country c1, Country c2) {
 				return (int)(c2.getSurface() - c1.getSurface());
-			};
+			}
 		});
 		
 		return allCountries.subList(0, 10);

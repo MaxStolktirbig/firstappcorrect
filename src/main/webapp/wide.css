@@ -1,0 +1,9 @@
+#frame{
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+#countryList{ grid-column: 1/4; grid-row: 2;}
+#myLocation{ grid-column: 1;    grid-row: 1; }
+#middleSection{grid-column: 2;  grid-row: 1; }
+#weatherInfo{ grid-column: 3;   grid-row: 1; }
