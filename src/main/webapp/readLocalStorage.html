@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Read</title>
+</head>
+<body>
+    <label id="read"></label>
+
+</body>
+<script>
+    window.onstorage = function () {
+        updateRead();
+    };
+    function updateRead() {
+        var a = document.getElementById("read");
+        a.innerText=  localStorage.getItem("inputvalue");
+    }
+</script>
+</html>

@@ -17,11 +17,11 @@ body{
     padding-left: 1em;
 }
 .content{
-    padding: 1em;
+    padding: 5px;
     overflow-x: auto;
 }
 .countryContent{
-    padding: 1em;
+    padding: 5px;
 }
 .titles{
     font-size: larger;

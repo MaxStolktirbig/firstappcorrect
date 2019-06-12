@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+    <head>
+        <title>
+            World Resource
+        </title>
+        <meta name="viewport" content="width=-width, initial-scale=1 maximum-scale=1">
+        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" media="screen and (max-width: 1084px)" href="narrow.css">
+        <link rel="stylesheet" media="screen and (min-width: 1085px)" href="wide.css">
+        <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <div id="frame">
+            <div id="myLocation">
+                <div class="header">
+                    <h1>Mijn locatie</h1>
+                </div>
+                <div class="content">
+                    <table id="locatie">
+                        <tr>
+                            <td>Landcode:</td>
+                            <td id="lndc"></td>
+                        </tr>
+                        <tr>
+                            <td>Land:</td>
+                            <td id="lnnm"></td>
+                        </tr>
+                        <tr>
+                            <td>Regio:</td>
+                            <td id="region"></td>
+                        </tr>
+                        <tr>
+                            <td>Stad:</td>
+                            <td id="cty"></td>
+                        </tr>
+                        <tr>
+                            <td>Postcode:</td>
+                            <td id="pstcd"></td>
+                        </tr>
+                        <tr>
+                            <td>Latitude:</td>
+                            <td id="lat"></td>
+                        </tr>
+                        <tr>
+                            <td>Longtitude:</td>
+                            <td id="lon"></td>
+                        </tr>
+                        <tr>
+                            <td>IP:</td>
+                            <td id="ip"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div id="middleSection"></div>
+            <div id="weitherInfo">
+                <div class="header">
+                    <h1 id="weertitel"></h1>
+                </div>
+                <div class="content">
+                    <table id = "weather">
+                        <tr>
+                            <td>Temperatuur: </td>
+                            <td id="temp"></td>
+                        </tr>
+                        <tr>
+                            <td>Luchtvochtigheid: </td>
+                            <td id="luchtv"></td>
+                        </tr>
+                        <tr>
+                            <td>Windsnelheid: </td>
+                            <td id="winds"></td>
+                        </tr>
+                        <tr>
+                            <td>Windrichting: </td>
+                            <td id="windr"></td>
+                        </tr>
+                        <tr>
+                            <td>Zonsopgang: </td>
+                            <td id="sunup"></td>
+                        </tr>
+                        <tr>
+                            <td>Zonsoondergang: </td>
+                            <td id="sundown"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div id="countryList">
+                <div class="header">
+                <h1>Beschikbare vakantie bestemmingen</h1>
+                </div>
+
+                <div class="content">
+                    <table id="bestemmingen" class="countryContent">
+                        <tr id="titles">
+                            <td><h3>Land</h3></td>
+                            <td><h3>Hoofdstad</h3></td>
+                            <td class="reg"><h3>Regio</h3></td>
+                            <td class="sur"><h3>Oppervlakte</h3></td>
+                            <td class="pop"><h3>Inwoners</h3></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="main.js"></script>
+</html>

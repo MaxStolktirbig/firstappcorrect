@@ -7,3 +7,10 @@
 #myLocation{ grid-column: 1;    grid-row: 1; }
 #middleSection{grid-column: 2;  grid-row: 1; }
 #weatherInfo{ grid-column: 3;   grid-row: 1; }
+.content{
+    padding: 1em;
+    overflow-x: auto;
+}
+.countryContent{
+    padding: 1em;
+}
