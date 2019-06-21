@@ -1,6 +1,6 @@
 #frame{
     display: grid;
-    grid-template-rows: 1fr 2fr;
+    grid-template-rows: 1fr 10fr;
     grid-template-columns: 1fr 1fr 1fr;
 }
 #countryList{ grid-column: 1/4; grid-row: 2;}
@@ -13,4 +13,6 @@
 }
 .countryContent{
     padding: 1em;
+    overflow: auto;
+    max-height: 700px;
 }

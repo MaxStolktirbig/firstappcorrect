@@ -6,9 +6,8 @@ import nl.hu.wac.firstapp.service.WorldService;
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -16,6 +15,8 @@ import java.util.List;
 @Path("/countries")
 public class WorldResource {
     private WorldService service = new WorldService();
+
+
     private JsonObjectBuilder convert2Json(Country c) {
         JsonObjectBuilder json = Json.createObjectBuilder();
         json.add("code", c.getCode())
@@ -67,6 +68,7 @@ public class WorldResource {
         return lagestPopulationJson.build().toString();
     }
 
+
     @GET
     @Path("{id}")
     public String getCountry(@PathParam("id") String id){
@@ -74,6 +76,34 @@ public class WorldResource {
         Country c = service.getCountryByCode(id);
         JsonObject countryJson = convert2Json(c).build();
         return countryJson.toString();
+    }
+
+    @DELETE
+    @Path("{id}")
+    public boolean deleteCountry(@PathParam("id") String id){
+        id = id.toUpperCase();
+        Country c = service.getCountryByCode(id);
+        return service.deleteCountry(c);
+    }
+
+    @PUT
+    @Path("{id}")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public boolean updateCountry(@PathParam("id") String id,
+                                 @FormParam("country") String country,
+                                 @FormParam("capital") String captital,
+                                 @FormParam("population") int population,
+                                 @FormParam("region") String region,
+                                 @FormParam("surface") double surface){
+        System.out.println(captital+country+region+population+surface);
+        id = id.toUpperCase();
+        Country c = service.getCountryByCode(id);
+        c.setName(country);
+        c.setCapital(captital);
+        c.setPopulation(population);
+        c.setRegion(region);
+        c.setSurface(surface);
+        return service.updateCountry(c);
     }
 
 }

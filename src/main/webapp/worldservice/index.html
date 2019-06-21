@@ -54,7 +54,15 @@
                     </table>
                 </div>
             </div>
-            <div id="middleSection"></div>
+            <div id="middleSection">
+                <form id="updateForm">
+                            Land:          <br><input type="text" name="country" id="updateCountry"><br>
+                            Hoofdstad:     <br><input type="text" name="capital" id="updateCapital"><br>
+                            Regio:         <br><input type="text" name="region" id="updateRegion"><br>
+                            Oppervlakte:   <br><input type="text" name="surface" id="updateSurface"><br>
+                            Inwoners:      <br><input type="text" name="population" id="updatePopulation"><br>
+                </form>
+            </div>
             <div id="weitherInfo">
                 <div class="header">
                     <h1 id="weertitel"></h1>
@@ -101,11 +109,13 @@
                             <td class="reg"><h3>Regio</h3></td>
                             <td class="sur"><h3>Oppervlakte</h3></td>
                             <td class="pop"><h3>Inwoners</h3></td>
+                            <td class="update"><h3>Update</h3></td>
+                            <td class="delete"><h3>Delete</h3></td>
                         </tr>
                     </table>
                 </div>
             </div>
         </div>
     </body>
-    <script src="main.js"></script>
+    <script src="/worldservice/main.js"></script>
 </html>

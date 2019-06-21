@@ -3,22 +3,6 @@
         "http://java.sun.com/dtd/web-app_2_3.dtd"
         >
 <web-app>
-  <!--<servlet>-->
-    <!--<servlet-name>-->
-      <!--Dynamic Servlet-->
-    <!--</servlet-name>-->
-    <!--<servlet-class>-->
-      <!--nl.hu.wac.firstapp.servlets.DynamicServlet-->
-    <!--</servlet-class>-->
-  <!--</servlet>-->
-  <!--<servlet-mapping>-->
-    <!--<servlet-name>-->
-      <!--Dynamic Servlet-->
-    <!--</servlet-name>-->
-    <!--<url-pattern>-->
-      <!--/DynamicServlet.do-->
-    <!--</url-pattern>-->
-  <!--</servlet-mapping>-->
   <servlet>
     <servlet-name>Jersey REST Service</servlet-name>
     <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
@@ -27,6 +11,11 @@
       <param-name>jersey.config.server.provider.packages</param-name>
       <param-value>nl.hu.wac.firstapp.webservices</param-value>
     </init-param>
+    <init-param>
+      <param-name>jersey.config.server.provider.classnames</param-name>
+      <param-value>org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature</param-value>
+    </init-param>
+
     <load-on-startup>1</load-on-startup>
   </servlet>
 
