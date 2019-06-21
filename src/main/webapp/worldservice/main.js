@@ -20,7 +20,7 @@ window.onload= function(){
 };
 
 document.getElementById('myLocation').addEventListener("click", homeWeatherData);
-
+document.getElementById("saveButton").addEventListener("click", saveData)
 function initPage(){
     initLoadData();
     loadDestinations();
@@ -192,7 +192,7 @@ function updateData(event) {
         }).then(function (boolean) {
             console.log(boolean);
             alert(boolean);
-    })
+    }).then(window.location.replace("/worldservice/index.html"))
 }
 
 function deleteData(event) {
@@ -205,5 +205,19 @@ function deleteData(event) {
         console.log(boolean);
         //initPage();
         alert(boolean);
-    })
+    }).then(window.location.replace("/worldservice/index.html"))
+}
+
+function saveData(event) {
+    var formData = new FormData(document.getElementById('updateForm'));
+    var encData = new URLSearchParams(formData.entries());
+    console.log('formdata' + formData);
+    fetch("http://localhost:1337/restservices/countries/save", {method: 'POST', body: encData})
+        .then(function(response){
+            return response.json();
+        }).then(function (boolean) {
+        console.log(boolean);
+        alert(boolean);
+    }).then(window.location.replace("/worldservice/index.html"))
+
 }

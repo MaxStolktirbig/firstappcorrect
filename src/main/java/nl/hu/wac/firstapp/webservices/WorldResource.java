@@ -106,6 +106,27 @@ public class WorldResource {
         return service.updateCountry(c);
     }
 
+    @POST
+    @Path("save")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public boolean saveCountry(@FormParam("id") String id,
+                                 @FormParam("country") String country,
+                                 @FormParam("capital") String captital,
+                                 @FormParam("population") int population,
+                                 @FormParam("region") String region,
+                                 @FormParam("surface") double surface){
+        System.out.println(captital+country+region+population+surface);
+        id = id.toUpperCase();
+        Country c = new Country();
+        c.setCode(id);
+        c.setName(country);
+        c.setCapital(captital);
+        c.setPopulation(population);
+        c.setRegion(region);
+        c.setSurface(surface);
+        return service.saveCountry(c);
+    }
+
 }
 
 

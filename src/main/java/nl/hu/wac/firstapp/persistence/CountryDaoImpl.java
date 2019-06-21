@@ -12,16 +12,15 @@ public class CountryDaoImpl extends PostgresBaseDao implements CountryDao {
     Statement stmt = getStatement();
     @Override
     public boolean save(Country country) {
-        String executeString = String.format("%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s",
+
+
+
+
+        String executeString = String.format("%s, %s, %s, %s, %s, %s",
                 makeSqlText(country.getCode()),
                 country.getPopulation(),
                 country.getSurface(),
                 makeSqlText(country.getCapital()),
-                makeSqlText(country.getContinent()),
-                makeSqlText(country.getGovernment()),
-                makeSqlText(country.getIso3()),
-                country.getLatitude(),
-                country.getLongitude(),
                 makeSqlText(country.getName()),
                 makeSqlText(country.getRegion()));
         System.out.println(executeString);
@@ -31,11 +30,6 @@ public class CountryDaoImpl extends PostgresBaseDao implements CountryDao {
                     " population," +
                     " surfacearea," +
                     " capital," +
-                    " continent," +
-                    " governmentform," +
-                    " iso3, " +
-                    " latitude," +
-                    " longitude," +
                     " name, " +
                     " region)" +
                     " VALUES ("+executeString+"); COMMIT; ");
@@ -49,7 +43,7 @@ public class CountryDaoImpl extends PostgresBaseDao implements CountryDao {
     @Override
     public boolean delete(Country country) {
         try{
-            stmt.execute("DELETE FROM COUNTRY WHERE CODE = "+makeSqlText(country.getCode())+"COMMIT;");
+            stmt.execute("DELETE FROM COUNTRY WHERE CODE = "+makeSqlText(country.getCode())+"; COMMIT;");
             return true;
         } catch (SQLException sqle){
             sqle.printStackTrace();

@@ -32,7 +32,6 @@ public class AuthenticationResource {
             if(role == null) {throw new IllegalArgumentException("No user found!");}
 
             String token = createToken(username, role);
-
             SimpleEntry<String, String> JWT = new SimpleEntry<String, String>("JWT", token);
             return Response.ok(JWT).build();
         } catch (Exception e){

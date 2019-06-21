@@ -12,6 +12,9 @@ public class Country {
 	private String government;
 	private double latitude;
 	private double longitude;
+
+	public Country(){
+	}
 	
 	public Country(String code, String iso3, String nm, String cap, String ct, String reg, double sur, int pop, String gov, double lat, double lng) {
 		this.code = code; 
@@ -69,6 +72,10 @@ public class Country {
 	
 	public double getLongitude() {
 		return longitude;
+	}
+
+	public void setCode(String code){
+		this.code=code;
 	}
 
 	public void setCapital(String capital) {

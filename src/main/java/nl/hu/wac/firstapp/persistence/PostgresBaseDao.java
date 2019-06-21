@@ -1,7 +1,6 @@
 package nl.hu.wac.firstapp.persistence;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.Statement;
 import javax.naming.*;
 import javax.sql.*;

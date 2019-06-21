@@ -3,9 +3,6 @@ package nl.hu.wac.firstapp.service;
 import nl.hu.wac.firstapp.domain.Country;
 import nl.hu.wac.firstapp.persistence.CountryDaoImpl;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class WorldService {
@@ -35,7 +32,15 @@ public class WorldService {
 			return false;
 		}
 	}
-
+	public boolean saveCountry(Country c){
+		try{
+			cdi.save(c);
+			return true;
+		} catch (Exception e){
+			e.printStackTrace();
+			return false;
+		}
+	}
 	public boolean updateCountry(Country c){
 		try{
 			cdi.update(c);
