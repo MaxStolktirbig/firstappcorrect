@@ -1,12 +1,9 @@
-window.onload = function() {
-    document.getElementById("loginForm").addEventListener("submit", login)
-    }
 
-
+document.getElementById("button").addEventListener("click", login());
 function login(event) {
     let formData = new FormData(document.querySelector('#loginForm'));
-    let encData = new URLSearchParams(formData.entries());
-
+    let encData = new URLSearchParams(formData);
+    console.log(encData);
     fetch("/restservices/authentication", {method: 'POST', body: encData})
         .then(function (response) {
              if (response.ok) {
@@ -16,6 +13,7 @@ function login(event) {
                 window.sessionStorage.setItem('found', 'no');
              }
         })
-        .then(myJson => window.sessionStorage.setItem("sessionToken", myJson.JWT))
+            // .then(myJson => window.sessionStorage.setItem("sessionToken", myJson.JWT))
+            //     .then(window.location.replace("worldservice/index.html"))
         .catch(error => sessionStorage.setItem('error', error));
 };

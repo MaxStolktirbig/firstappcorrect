@@ -12,6 +12,10 @@
     window.onstorage = function () {
         updateRead();
     };
+    window.onload = function () {
+        updateRead();
+    };
+
     function updateRead() {
         var a = document.getElementById("read");
         a.innerText=  localStorage.getItem("inputvalue");

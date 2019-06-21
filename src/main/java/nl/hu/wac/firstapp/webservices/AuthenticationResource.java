@@ -26,6 +26,7 @@ public class AuthenticationResource {
     public Response authenticateUser(@FormParam("username") String username, @FormParam("password") String password){
         try {
             // Authenticate the user against the database
+            System.out.println(username+": "+password);
             UserDao dao = new UserDaoImpl();
             String role = dao.findRoleForUser(username, password);
 
