@@ -20,7 +20,7 @@ window.onload= function(){
 };
 
 document.getElementById('myLocation').addEventListener("click", homeWeatherData);
-document.getElementById("saveButton").addEventListener("click", saveData)
+document.getElementById("saveButton").addEventListener("click", saveData);
 function initPage(){
     initLoadData();
     loadDestinations();
@@ -45,6 +45,7 @@ function initLoadData() {
         });
 
 }
+
 function loadWeatherData(lat, lon, city, country) {
     if(city != "") {
         headertext.innerText = "Het weer in " + city;
@@ -56,18 +57,18 @@ function loadWeatherData(lat, lon, city, country) {
     console.log(today);
     var checkdate = today.setMinutes(today.getMinutes()-10);
     console.log(checkdate);
-    var storageDate = localStorage.getItem("countryRetrieve"+lat);
-    if(storageDate<=checkdate || storageDate == undefined) {
+    var storageDate = localStorage.getItem("countryRetrieve"+lat+lon);
+    if(storageDate<=checkdate || storageDate == null) {
         fetch(fetchstring).then(function (response) {
             return response.json();
         }).then(function (weatherData) {
             console.log("Response "+ weatherData);
-            localStorage.setItem(lat, JSON.stringify(weatherData));
-            localStorage.setItem("countryRetrieve"+lat, today);
+            localStorage.setItem(lat+lon, JSON.stringify(weatherData));
+            localStorage.setItem("countryRetrieve"+lat+lon, today);
             insertWeatherData(weatherData);
         });
     } else {
-        insertWeatherData(JSON.parse(localStorage.getItem(lat)));
+        insertWeatherData(JSON.parse(localStorage.getItem(lat+lon)));
     }
 
 
@@ -105,7 +106,7 @@ function homeWeatherData(event){
     var lat = latitude.innerText;
     var lon = longtitude.innerText;
     var country = land.innerText;
-    loadWeatherData(lat, lon, city);
+    loadWeatherData(lat, lon, city, country);
 }
 
 

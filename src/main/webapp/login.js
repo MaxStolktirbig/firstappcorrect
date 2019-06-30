@@ -1,5 +1,5 @@
 
-document.getElementById("button").addEventListener("click", login());
+document.getElementById("button").addEventListener("click", login);
 function login(event) {
     let formData = new FormData(document.querySelector('#loginForm'));
     let encData = new URLSearchParams(formData);
@@ -7,13 +7,12 @@ function login(event) {
     fetch("/restservices/authentication", {method: 'POST', body: encData})
         .then(function (response) {
              if (response.ok) {
-                 window.sessionStorage.setItem('found', 'yes');
+                 window.localStorage.setItem('found', 'yes');
                  return response.json();
             }else {
-                window.sessionStorage.setItem('found', 'no');
+                window.localStorage.setItem('found', 'no');
              }
         })
-            // .then(myJson => window.sessionStorage.setItem("sessionToken", myJson.JWT))
-            //     .then(window.location.replace("worldservice/index.html"))
+            .then(myJson => window.sessionStorage.setItem("sessionToken", myJson.JWT))
         .catch(error => sessionStorage.setItem('error', error));
 };

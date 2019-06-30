@@ -3,6 +3,7 @@ package nl.hu.wac.firstapp.webservices;
 import nl.hu.wac.firstapp.domain.Country;
 import nl.hu.wac.firstapp.service.WorldService;
 
+import javax.annotation.security.RolesAllowed;
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
